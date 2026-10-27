@@ -195,7 +195,7 @@ void Server::handleClient() {
         m_logger.logError("Вектор принят.");
         }
 
-        std::vector<int32_t> vectorData;
+        std::vector<uint32_t> vectorData;
         if (!m_communicator.receiveVector(vectorData, vectorSize)) {
             m_logger.logError("Ошибка приема данных вектора " + std::to_string(i + 1) + " (" + login + ")");
             m_communicator.closeConnection();
@@ -205,7 +205,7 @@ void Server::handleClient() {
         m_logger.logError("Вектор принят.");
         }
 
-        int32_t result = m_processor.calculateAverage(vectorData);
+        uint32_t result = m_processor.calculateAverage(vectorData);
 
         if (!m_communicator.sendData(result)) {
             m_logger.logError("Ошибка отправки результата вектора " + std::to_string(i + 1) + " (" + login + ")");

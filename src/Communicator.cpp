@@ -112,19 +112,19 @@ bool Communicator::receiveUint32(uint32_t& value) {
     return receiveData(&value, sizeof(value));
 }
 
-bool Communicator::receiveVector(std::vector<int32_t>& vec, uint32_t size) {
+bool Communicator::receiveVector(std::vector<uint32_t>& vec, uint32_t size) {
     vec.resize(size);
     if (size == 0) {
         return true;
     }
-    return receiveData(vec.data(), size * sizeof(int32_t));
+    return receiveData(vec.data(), size * sizeof(uint32_t));
 }
 
 bool Communicator::sendData(const std::string& str) {
     return sendData(str.data(), str.size());
 }
 
-bool Communicator::sendData(int32_t result) {
+bool Communicator::sendData(uint32_t result) {
     return sendData(&result, sizeof(result));
 }
 

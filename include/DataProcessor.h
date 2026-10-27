@@ -9,5 +9,5 @@ public:
 
     ~DataProcessor() = default;
 
-    int32_t calculateAverage(const std::vector<int32_t>& data);
+    uint32_t calculateAverage(const std::vector<uint32_t>& data);
 };

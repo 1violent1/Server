@@ -21,11 +21,11 @@ public:
 
     bool receiveUint32(uint32_t& value);
 
-    bool receiveVector(std::vector<int32_t>& vec, uint32_t size);
+    bool receiveVector(std::vector<uint32_t>& vec, uint32_t size);
 
     bool sendData(const std::string& str);
 
-    bool sendData(int32_t result);
+    bool sendData(uint32_t result);
 
     bool sendData(const void* buffer, size_t size);
 
