@@ -27,7 +27,7 @@ std::string Authenticator::calculateMD5(const std::string& password, const std::
             hash,
             new CryptoPP::HexEncoder(
                 new CryptoPP::StringSink(digest),
-                true // верхний регистр: 0-9, A-F
+                true
             )
         )
     );

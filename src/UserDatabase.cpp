@@ -38,7 +38,7 @@ bool UserDatabase::load(const std::string& dbPath) {
     std::string line;
     while (std::getline(file, line)) {
         if (line.empty() || line[0] == '#') {
-            continue; // Пропуск пустых строк и комментариев
+            continue;
         }
 
         auto delimPos = line.find(':');

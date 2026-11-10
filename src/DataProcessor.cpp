@@ -5,22 +5,18 @@ uint32_t DataProcessor::calculateAverage(const std::vector<uint32_t>& data) {
         return 0;
     }
 
-    __int128 sum = 0;
+    __uint128_t sum = 0;
     for (uint32_t val : data) {
         sum += val;
     }
 
-    __int128 count = static_cast<__int128>(data.size());
-    __int128 avg = sum / count;
+    __uint128_t count = static_cast<__uint128_t>(data.size());
+    __uint128_t avg = sum / count;
 
-    constexpr int64_t MAX_LIMIT = 2147483647LL;   //  2^31 - 1
-    constexpr int64_t MIN_LIMIT = -2147483648LL;  // -2^31
+    constexpr uint64_t MAX_LIMIT = 4294967295ULL;
 
     if (avg > MAX_LIMIT) {
         return static_cast<uint32_t>(MAX_LIMIT);
-    }
-    if (avg < MIN_LIMIT) {
-        return static_cast<uint32_t>(MIN_LIMIT);
     }
 
     return static_cast<uint32_t>(avg);

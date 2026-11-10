@@ -15,6 +15,9 @@ Communicator::~Communicator() {
 }
 
 bool Communicator::bindAndListen(int port) {
+    if (port <= 0 || port > 65535) {
+      return false;
+    }
     closeServer();
 
     m_serverSock = ::socket(AF_INET, SOCK_STREAM, 0);

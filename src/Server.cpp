@@ -33,10 +33,6 @@ void Server::printHelp(const char* programName) {
 }
 
 int Server::parseCommandLine(int argc, char* argv[]) {
-    if (argc == 1) {
-        printHelp(argv[0]);
-        return 1;
-    }
 
     int opt = 0;
     while ((opt = getopt(argc, argv, "b:l:p:h")) != -1) {
