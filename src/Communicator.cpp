@@ -1,3 +1,12 @@
+/**
+ * @file Communicator.cpp
+ * @author Попков В.С.
+ * @version 1.0
+ * @date 2026
+ * @copyright ИБСТ ПГУ
+ * @brief Реализация методов класса Communicator для работы с сокетами TCP
+ */
+
 #include "Communicator.h"
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -16,8 +25,9 @@ Communicator::~Communicator() {
 
 bool Communicator::bindAndListen(int port) {
     if (port <= 0 || port > 65535) {
-      return false;
+        return false;
     }
+
     closeServer();
 
     m_serverSock = ::socket(AF_INET, SOCK_STREAM, 0);

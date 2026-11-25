@@ -1,3 +1,12 @@
+/**
+ * @file Logger.cpp
+ * @author Попков В.С.
+ * @version 1.0
+ * @date 2026
+ * @copyright ИБСТ ПГУ
+ * @brief Реализация методов класса Logger
+ */
+
 #include "Logger.h"
 #include <iostream>
 #include <chrono>

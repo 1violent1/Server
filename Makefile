@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -O2 -Iinclude
 LDFLAGS = -lcryptopp
 
 TARGET = vcalc_server
-TEST_TARGET = unit_tests
+TEST_TARGET = tests
 BUILD_DIR = obj
 
 CORE_SRCS = src/Logger.cpp \
@@ -49,7 +49,24 @@ $(BUILD_DIR)/tests:
 test: $(TEST_TARGET)
 	./$(TEST_TARGET)
 
-clean:
-	rm -rf $(BUILD_DIR) $(TARGET) $(TEST_TARGET)
+functional_test: $(TARGET)
+	./functional_test.sh
+doc:
+	doxygen Doxyfile
+	@if [ -d "docs/latex" ] && command -v pdflatex >/dev/null 2>&1; then \
+	  echo "Генерация PDF документации из LaTeX..."; \
+	  $(MAKE) -C docs/latex pdf; \
+	  cp docs/latex/refman.pdf docs/vcalc_server_documentation.pdf; \
+	  echo "============================================================"; \
+	  echo "PDF документация успешно сохранена в:"; \
+	  echo "  docs/vcalc_server_documentation.pdf"; \
+	  echo "============================================================"; \
+	else \
+	  echo "HTML документация создана в docs/html/index.html"; \
+	  echo "Для сборки PDF требуется установить pdflatex (пакет doxygen-latex или texlive)"; \
+	fi
 
-.PHONY: all clean test
+clean:
+	rm -rf $(BUILD_DIR) $(TARGET) $(TEST_TARGET) docs
+
+.PHONY: all clean test functional_test doc

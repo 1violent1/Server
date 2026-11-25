@@ -1,3 +1,12 @@
+/**
+ * @file UserDatabase.cpp
+ * @author Попков В.С.
+ * @version 1.0
+ * @date 2026
+ * @copyright ИБСТ ПГУ
+ * @brief Реализация методов класса UserDatabase
+ */
+
 #include "UserDatabase.h"
 #include <fstream>
 #include <sstream>
